@@ -18,7 +18,9 @@ class FrontController extends Controller
 
     public function user_info(Request $request)
     {
+        // 法一
         //$user= Auth::user();
+        // 法二
         $user = $request->user();
         return view('userSetting', compact('user'));
     }

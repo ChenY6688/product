@@ -2,7 +2,7 @@
 
 @section('main')
     <div class="container">
-        <form action="{{ route('user.info.update') }}" method="POST">
+        <form action="{{ route('user.info.update') }}" method="POST" class="d-flex flex-column row-gap-3">
             @csrf
             <h1>帳號資訊</h1>
             <div>帳號:{{ $user->email }}</div>
