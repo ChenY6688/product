@@ -69,7 +69,18 @@
                 <div>
                     hi, {{ Auth::user()->name }}
                 </div>
+                <div>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-secondary">登出</button>
+                    </form>
+                </div>
             @endauth
+            @guest
+                <div>
+                    <a href="{{ route('login') }}">hi, 訪客點此登入</a>
+                </div>
+            @endguest
             <a href="https://freshcart.codescandy.com/pages/shop-wishlist.html" class="text text-decoration-none">
                 <img src="{{ asset('image/heart.svg') }}" alt="">
             </a>
