@@ -71,7 +71,7 @@
             <div class="p-2 flex-grow-1 ">
                 <h1>Popular Products</h1>
             </div>
-            <div class="p-2">
+            {{-- <div class="p-2">
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden"></span>
@@ -80,7 +80,7 @@
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden"></span>
                 </button>
-            </div>
+            </div> --}}
         </div>
         <div class="swiper-shop"> <!--卷軸-->
             <div id="carouselExample" class="carousel slide">
