@@ -107,7 +107,7 @@ class FrontController extends Controller
         // 寫法一
         $oddCart = Cart::where('user_id', $request->user()->id)->where('product_id', $request->product_id)->first();
         if ($oddCart) {
-            $cart = $oddCart->updata([
+            $cart = $oddCart->update([
                 'qty' => $oddCart->qty + $request->qty,
             ]);
         } else {
