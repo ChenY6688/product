@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Cart;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use PhpParser\Node\Expr\Cast\Object_;
 
 class FrontController extends Controller
 {
@@ -80,11 +82,53 @@ class FrontController extends Controller
         // $request->session()->put('mytest', '曾經到過step2');
         $phone = $request->session()->get('form_phone', '');
         $name = $request->session()->get('form_name', '');
-        return view('test2', compact('phone','name'));
+        return view('test2', compact('phone', 'name'));
     }
 
     public function fetchTest(Request $request)
     {
         dd($request->all());
+    }
+
+    public function product()
+    {
+        $products = Product::where('status', 1)->get();
+        return view('frontProduct', compact('products'));
+    }
+
+    public function add_cart(Request $request)
+    {
+        $request->validate([
+            'qty' => 'required|min:1|numeric',
+            'product_id' => 'required|exists:products,id|numeric',
+
+        ]);
+
+        // 寫法一
+        $oddCart = Cart::where('user_id', $request->user()->id)->where('product_id', $request->product_id)->first();
+        if ($oddCart) {
+            $cart = $oddCart->updata([
+                'qty' => $oddCart->qty + $request->qty,
+            ]);
+        } else {
+            $cart = Cart::create([
+                'product_id' => $request->product_id,
+                'qty' => $request->qty,
+                'user_id' => $request->user()->id,
+            ]);
+        }
+
+        // 寫法二
+        // Cart::updateOrCreate([
+        //     'user_id' => $request->user()->id,
+        //     'product_id' => $request->product_id,
+        // ],[
+        //     'qty' =>
+        // ]);
+
+        return (object)[
+            'code' => $cart ? 1 : 0,
+            'product_id' => $request->product_id,
+        ];
     }
 }

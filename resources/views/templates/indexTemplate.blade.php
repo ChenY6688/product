@@ -91,9 +91,6 @@
                 <img src="{{ asset('image/person.svg') }}" alt="">
             </a>
         </div>
-        {{-- <a href="{{ route('user.info') }}" class="p-xl-4">
-      <img src="{{ asset('image/bag-check.svg') }}" alt="">
-    </a> --}}
     </div> <!--標題頂層-->
     <div class="d-xl-flex flex-row container mb-xxl-5 "> <!--頂層第二列-->
         <div class="dropdown">
@@ -110,104 +107,12 @@
                 <li><a class="dropdown-item" href="#">Separated link</a></li>
             </ul>
         </div>
-        <div class="ps-xl-2  d-block"> <!--第二列選單一-->
-            <div class="dropdown ps-xl-3 ">
-                <a class="btn  dropdown-toggle fw-bolder" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    Dashboard
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="ps-xl-2 "><!--第二列選單二-->
-            <div class="dropdown ps-xl-3 ">
-                <a class="btn  dropdown-toggle fw-bolder" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    shop
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="ps-xl-2">
-            <div class="dropdown "><!--第二列選單三-->
-                <a class="btn  dropdown-toggle fw-bolder" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    stores
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="ps-xl-2 ">
-            <div class="dropdown ps-xl-3 "><!--第二列選單四-->
-                <a class="btn  dropdown-toggle fw-bolder" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    Mega menu
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="ps-xl-2"><!--第二列選單五-->
-            <div class="dropdown ps-xl-3 ">
-                <a class="btn  dropdown-toggle fw-bolder" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    Pages
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="ps-xl-2"><!--第二列選單六-->
-            <div class="dropdown ps-xl-3 ">
-                <a class="btn  dropdown-toggle fw-bolder" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    Account
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="ps-xl-2"><!--第二列選單七-->
-            <div class="dropdown text-xl- ">
-                <a class="btn fw-bolder " href="https://freshcart.codescandy.com/dashboard/index.html"
-                    role="button">
-                    dashboard
-                </a>
-
-            </div>
-        </div>
         <div class="ps-xl-2"><!--第二列選單八-->
             <div class="dropdown ps-xl-3 ">
-                <a class="btn   fw-bolder" href="#" role="button" data-bs-toggle="dropdown"
+                <a class="btn fw-bolder" href=" {{ route('front.products') }}" role="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
-                    Docs
+                    Product
                 </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
             </div>
         </div>
     </div>
@@ -223,11 +128,11 @@
                             Categouries
                         </div>
                         <div class="col-6">
-                            <p><a class="link-opacity-10-hover col-12 text-decoration-none   "
-                                    href="#">Vegetables & Fruits</a>
+                            <p><a class="link-opacity-10-hover col-12 text-decoration-none   " href="#">Vegetables
+                                    & Fruits</a>
                             </p>
-                            <p><a class="link-opacity-10-hover col-12 text-decoration-none   "
-                                    href="#">Breakfast & instant
+                            <p><a class="link-opacity-10-hover col-12 text-decoration-none   " href="#">Breakfast
+                                    & instant
                                     food</a>
                             </p>
                             <p><a class="link-opacity-10-hover col-12 text-decoration-none   " href="#">Bakery &

@@ -280,8 +280,8 @@
         <nav class="navbar-vertical-nav d-none d-xl-block ">
             <div class="navbar-vertical">
                 <div class="px-4 py-5">
-                    <a href="#" class="navbar-brand">
-                        <img src="./assets/images/logo/freshcart-logo.svg" alt="">
+                    <a href="{{ route('front.index') }}" class="navbar-brand">
+                        <img src="{{ asset('assets/images/logo/freshcart-logo.svg') }}" alt="">
                     </a>
                 </div>
                 <div class="navbar-vertical-content flex-grow-1" data-simplebar="init">
@@ -296,7 +296,11 @@
                                     <div class="simplebar-content" style="padding: 0px;">
                                         <ul class="navbar-nav flex-column" id="sideNavbar">
                                             <li class="nav-item ">
-                                                <a class="nav-link " href="#">
+                                                <a 
+                                                @if (Route::currentRouteName() == 'backend.index') class="nav-link avtive"
+                                                @else
+                                                class="nav-link" @endif
+                                                    href="{{ route('backend.index') }}">
                                                     <div class="d-flex align-items-center">
                                                         <span class="nav-link-icon"> <i
                                                                 class="fa-regular fa-house-chimney-blank"></i></span>
@@ -308,7 +312,10 @@
                                                 <span class="nav-label">Store Managements</span>
                                             </li>
                                             <li class="nav-item ">
-                                                <a class="nav-link " href="#">
+                                                <a @if (Route::currentRouteName() == 'product.index') class="nav-link active"
+                                                @else
+                                                class="nav-link" @endif
+                                                    href="{{ route('product.index') }}">
                                                     <div class="d-flex align-items-center">
                                                         <span class="nav-link-icon"> <i
                                                                 class="fa-sharp fa-light fa-cart-shopping"></i></span>
@@ -317,228 +324,38 @@
                                                 </a>
                                             </li>
                                             <li class="nav-item ">
-                                                <a class="nav-link " href="#">
+                                                <a 
+                                                @if (Route::currentRouteName() == 'type.index') class="nav-link avtive"
+                                                @else
+                                                class="nav-link" 
+                                                @endif
+                                                    href="{{ route('type.index') }}">
                                                     <div class="d-flex align-items-center">
                                                         <span class="nav-link-icon"> <i
-                                                                class="fa-regular fa-list-ul"></i></span>
-                                                        <span class="nav-link-text">Categories</span>
+                                                                class="fa-thin fa-shop"></i></span>
+                                                        <span class="nav-link-text">type</span>
                                                     </div>
                                                 </a>
                                             </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link  " href="#" data-bs-toggle="collapse"
-                                                    data-bs-target="#navCategoriesOrders" aria-expanded="false"
-                                                    aria-controls="navCategoriesOrders">
-                                                    <div class="d-flex align-items-center">
-                                                        <span class="nav-link-icon"> <i
-                                                                class="fa-sharp fa-light fa-briefcase-blank"></i></span>
-                                                        <span class="nav-link-text">Orders</span>
-                                                    </div>
-                                                </a>
-                                                <div id="navCategoriesOrders" class="collapse  show "
-                                                    data-bs-parent="#sideNavbar">
-                                                    <ul class="nav flex-column">
-                                                        <li class="nav-item ">
-                                                            <a class="nav-link  active " href="#">
-                                                                List
-                                                            </a>
-                                                        </li>
-                                                        <!-- Nav item -->
-                                                        <li class="nav-item ">
-                                                            <a class="nav-link " href="#">
-                                                                Single
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </li>
-
                                             <li class="nav-item ">
                                                 <a class="nav-link " href="#">
                                                     <div class="d-flex align-items-center">
                                                         <span class="nav-link-icon"> <i
                                                                 class="fa-thin fa-shop"></i></span>
-                                                        <span class="nav-link-text">Sellers / Vendors</span>
+                                                        <span class="nav-link-text">Orders</span>
                                                     </div>
                                                 </a>
-                                            </li>
-                                            <li class="nav-item ">
-                                                <a class="nav-link " href="#">
-                                                    <div class="d-flex align-items-center">
-                                                        <span class="nav-link-icon"> <i
-                                                                class="fa-light fa-user-group"></i></span>
-                                                        <span class="nav-link-text">Customers</span>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item ">
-                                                <a class="nav-link " href="#">
-                                                    <div class="d-flex align-items-center">
-                                                        <span class="nav-link-icon"> <i
-                                                                class="fa-thin fa-star"></i></span>
-                                                        <span class="nav-link-text">Reviews</span>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <!-- Nav item -->
-                                            <li class="nav-item">
-                                                <a class="nav-link  collapsed " href="#"
-                                                    data-bs-toggle="collapse" data-bs-target="#navMenuLevelFirst"
-                                                    aria-expanded="false" aria-controls="navMenuLevelFirst">
-                                                    <span class="nav-link-icon"><i
-                                                            class="fa-light fa-arrow-turn-down-right fa-rotate-90"></i></span>
-                                                    <span class="nav-link-text">Menu Level</span>
-                                                </a>
-                                                <div id="navMenuLevelFirst" class="collapse "
-                                                    data-bs-parent="#sideNavbar">
-                                                    <ul class="nav flex-column">
-                                                        <li class="nav-item">
-                                                            <a class="nav-link " href="#"
-                                                                data-bs-toggle="collapse"
-                                                                data-bs-target="#navMenuLevelSecond1"
-                                                                aria-expanded="false"
-                                                                aria-controls="navMenuLevelSecond1">
-                                                                Two Level
-                                                            </a>
-                                                            <div id="navMenuLevelSecond1" class="collapse"
-                                                                data-bs-parent="#navMenuLevel">
-                                                                <ul class="nav flex-column">
-                                                                    <li class="nav-item">
-                                                                        <a class="nav-link " href="#">NavItem
-                                                                            1</a>
-                                                                    </li>
-                                                                    <li class="nav-item">
-                                                                        <a class="nav-link " href="#">NavItem
-                                                                            2</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </li>
-                                                        <li class="nav-item">
-                                                            <a class="nav-link  collapsed  " href="#"
-                                                                data-bs-toggle="collapse"
-                                                                data-bs-target="#navMenuLevelThreeOne1"
-                                                                aria-expanded="false"
-                                                                aria-controls="navMenuLevelThreeOne1">
-                                                                Three Level
-                                                            </a>
-                                                            <div id="navMenuLevelThreeOne1" class="collapse "
-                                                                data-bs-parent="#navMenuLevel">
-                                                                <ul class="nav flex-column">
-                                                                    <li class="nav-item">
-                                                                        <a class="nav-link  collapsed " href="#"
-                                                                            data-bs-toggle="collapse"
-                                                                            data-bs-target="#navMenuLevelThreeTwo"
-                                                                            aria-expanded="false"
-                                                                            aria-controls="navMenuLevelThreeTwo">
-                                                                            NavItem 1
-                                                                        </a>
-                                                                        <div id="navMenuLevelThreeTwo"
-                                                                            class="collapse collapse "
-                                                                            data-bs-parent="#navMenuLevelThree">
-                                                                            <ul class="nav flex-column">
-                                                                                <li class="nav-item">
-                                                                                    <a class="nav-link "
-                                                                                        href="#">
-                                                                                        NavChild Item 1
-                                                                                    </a>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </li>
-                                                                    <li class="nav-item">
-                                                                        <a class="nav-link " href="#">Nav
-                                                                            Item 2</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
                                             </li>
 
                                             <li class="nav-item mt-6 mb-3">
-                                                <span class="nav-label">Site Settings</span> <span
-                                                    class="badge bg-light-info text-dark-info">Coming Soon</span>
+                                                <span class="nav-label">Site Settings</span>
                                             </li>
                                             <li class="nav-item ">
-                                                <a class="nav-link disabled" href="#">
+                                                <a class="nav-link" href="#">
                                                     <div class="d-flex align-items-center">
                                                         <span class="nav-link-icon"> <i
                                                                 class="fa-thin fa-newspaper"></i></span>
-                                                        <span class="nav-link-text">Blog</span>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item ">
-                                                <a class="nav-link disabled" href="#">
-                                                    <div class="d-flex align-items-center">
-                                                        <span class="nav-link-icon"> <i
-                                                                class="fa-thin fa-images"></i></span>
-                                                        <span class="nav-link-text">Media</span>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item ">
-                                                <a class="nav-link disabled" href="#">
-                                                    <div class="d-flex align-items-center">
-                                                        <span class="nav-link-icon"> <i
-                                                                class="fa-light fa-gear"></i></span>
-                                                        <span class="nav-link-text">Store Settings</span>
-                                                    </div>
-                                                </a>
-                                            </li>
-
-                                            <li class="nav-item mt-6 mb-3">
-                                                <span class="nav-label">Support</span> <span
-                                                    class="badge bg-light-info text-dark-info">Coming Soon</span>
-                                            </li>
-                                            <li class="nav-item ">
-                                                <a class="nav-link disabled" href="#">
-                                                    <div class="d-flex align-items-center">
-                                                        <span class="nav-link-icon"> <i
-                                                                class="fa-sharp fa-solid fa-headphones"></i></span>
-                                                        <span class="nav-link-text">Support Ticket</span>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item ">
-                                                <a class="nav-link disabled" href="#">
-                                                    <div class="d-flex align-items-center">
-                                                        <span class="nav-link-icon"> <i
-                                                                class="fa-light fa-circle-question"></i></span>
-                                                        <span class="nav-link-text">Help Center</span>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item ">
-                                                <a class="nav-link disabled" href="#">
-                                                    <div class="d-flex align-items-center">
-                                                        <span class="nav-link-icon"> <i
-                                                                class="fa-duotone fa-infinity"></i></span>
-                                                        <span class="nav-link-text">How FreshCart Works</span>
-                                                    </div>
-                                                </a>
-                                            </li>
-
-                                            <li class="nav-item mt-6 mb-3">
-                                                <span class="nav-label">Our Apps</span>
-                                            </li>
-                                            <li class="nav-item ">
-                                                <a class="nav-link disabled" href="#">
-                                                    <div class="d-flex align-items-center">
-                                                        <span class="nav-link-icon"> <i
-                                                                class="fa-brands fa-apple"></i></span>
-                                                        <span class="nav-link-text">Apple Store</span>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item ">
-                                                <a class="nav-link disabled" href="#">
-                                                    <div class="d-flex align-items-center">
-                                                        <span class="nav-link-icon"> <i
-                                                                class="fa-brands fa-google-play"></i></span>
-                                                        <span class="nav-link-text">Google Play Store</span>
+                                                        <span class="nav-link-text">Setting</span>
                                                     </div>
                                                 </a>
                                             </li>
@@ -608,11 +425,12 @@
                                                 <a class="nav-link " href="#">
                                                     <div class="d-flex align-items-center">
                                                         <span class="nav-link-icon"> <i
-                                                                class="fa-regular fa-list-ul"></i></span>
-                                                        <span class="nav-link-text">Categories</span>
+                                                                class="fa-sharp fa-light fa-cart-shopping"></i></span>
+                                                        <span class="nav-link-text">type</span>
                                                     </div>
                                                 </a>
                                             </li>
+
                                             <li class="nav-item">
                                                 <a class="nav-link  " href="#" data-bs-toggle="collapse"
                                                     data-bs-target="#navOrders" aria-expanded="false"
@@ -835,8 +653,8 @@
 
         <!-- main wrapper -->
         <main class="main-content-wrapper">
-          {{-- 放入section名字為main的資料 --}}
-          @yield('main')
+            {{-- 放入section名字為main的資料 --}}
+            @yield('main')
         </main>
     </div>
 
