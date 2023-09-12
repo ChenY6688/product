@@ -12,8 +12,6 @@
         <div class="text">
             <a href="#" class="green">Dashboard</a>&nbsp&nbsp&nbsp/&nbsp&nbsp&nbspOrder List
         </div>
-        {{-- <form action="{{ route('chekout.information.store') }}" style="position: relative" method="POST"> --}}
-        {{-- @csrf --}}
         <div class="container">
 
             <div class="mb-5">
@@ -24,8 +22,7 @@
                 <input type="date" class="form-control" id="exampleInputPassword1"name="date" value="">
                 <input type="tel" class="form-control" id="exampleInputPassword1" name="tel" placeholder="收件者聯絡電話"
                     value="">
-                <input type="text" class="form-control" id="exampleInputPassword1" name="re" placeholder="備註"
-                    value="">
+                <input type="text" class="form-control" id="exampleInputPassword1" name="re" placeholder="備註" value="">
             </div>
             <div class="button w-100">
                 <a href="{{ route('cart.step01') }}" class="btn btn-primary">上一部</a>
