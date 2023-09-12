@@ -1,0 +1,384 @@
+* {
+    box-sizing: border-box;
+}
+
+.row {
+    --bs-gutter-x: unset !important;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.nav-item.mb-2 a {
+    color: #728088;
+}
+
+.btn-check:checked+.btn,
+.btn.active,
+.btn.show,
+.btn:first-child:active,
+:not(.btn-check)+.btn:active {
+    border-color: #f0f3f2;
+}
+
+.top-sup-color {
+    background-color: #f0f3f2;
+}
+
+@media(min-width:576px) {
+    .container-fluid .row.h-27-43 {
+        max-width: 540px;
+    }
+}
+
+@media(min-width:768px) {
+    .container-fluid .row.h-27-43 {
+        max-width: 720px;
+    }
+}
+
+@media(min-width:992px) {
+    .container-fluid .row.h-27-43 {
+        max-width: 960px;
+    }
+
+    .navbar-toggler.btn.btn-outline-secondary.fake {
+        display: none !important;
+    }
+}
+
+@media(min-width:1200px) {
+    .container-fluid .row.h-27-43 {
+        max-width: 1140px;
+    }
+}
+
+@media(min-width:1400px) {
+    .container-fluid .row.h-27-43 {
+        max-width: 1320px;
+    }
+}
+
+html,
+body {
+    position: relative;
+    height: 100%;
+    background-color: white !important;
+}
+
+body {
+    background: #eee;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.swiper-button.position-absolute {
+    right: 100px;
+    bottom: 30px;
+}
+
+.swiper-button-prev {
+    left: -25px !important;
+}
+
+.swiper-button-next {
+    right: -50px !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: unset !important;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-size: unset !important;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.flag-img {
+    width: 16px;
+    height: 19px;
+}
+
+.dropdown-toggle-index {
+    white-space: nowrap;
+    padding: unset !important;
+}
+
+@media (max-width:992px) {
+    .col-xxl-8.col-lg-6.col-6 {
+        display: none;
+    }
+
+    .col-12.pb-4.fake {
+        display: none;
+    }
+
+    .row.fake {
+        justify-content: space-between;
+    }
+
+    .navbar-toggler.btn.btn-outline-secondary.sm {
+        padding: 10px 8px;
+    }
+
+    .d-flex.align-items-center.px-2 {
+        display: none !important;
+    }
+
+    .p-2.sm {
+        padding: unset !important;
+    }
+}
+
+@media (max-width:768px) {
+    .col.d-flex.justify-content-end {
+        display: none !important;
+    }
+
+    .col.d-flex.align-items-center {
+        justify-content: center;
+    }
+
+    .mb-15px {
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width:545px) {
+    .w-520-h-518 {
+        width: 300px !important;
+    }    
+    .offcanvas-conter {
+        right: calc((50% - 150px)) !important;
+    }
+}
+
+.h-27-43 {
+    height: 27.43px;
+}
+
+.dropdown-menu.show {
+    transform: translate3d(-80px, 29.5px, 0px) !important;
+}
+
+.offcanvas-conter {
+    top: calc(50% - 300px);
+    right: calc((50% - 259px));
+}
+
+.w-420-h-518 {
+    width: 420px;
+    height: 518px;
+}
+
+.w-520-h-518 {
+    width: 520px;
+    height: 518px;
+}
+
+.w-86-52 {
+    width: 86.52px;
+}
+
+.line-hight {
+    line-height: 24px;
+}
+
+.border {
+    border: 1px solid black;
+    border-radius: 7px;
+}
+
+.p-65 {
+    padding: 8.8px 16px !important;
+}
+
+.w-h-20 {
+    width: 20px;
+    height: 20px;
+}
+
+.w-h-27 {
+    width: 27px;
+    height: 27px;
+}
+
+.border-r-10 {
+    border-radius: 10px !important;
+}
+
+.dd-toggle {
+    white-space: nowrap;
+}
+
+.dropdown-menu.show {
+    transform: translate3d(0px, 29.5px, 0px) !important;
+}
+
+.background-img-w-100 {
+    background-size: cover;
+    background-position: center;
+    border-radius: 0.5rem;
+    height: 245.41px;
+    background-image: url('../img/grocery-banner.png') !important;
+}
+
+.background-img-w-100-2 {
+    background-image: url('../img/grocery-banner-2.jpg') !important;
+    background-size: cover;
+    background-position: center;
+    height: 245.41px;
+    border-radius: 0.5rem;
+}
+
+.background-img-w-100-3 {
+    background-image: url('../img/slide-1.jpg') !important;
+    background-size: cover;
+    height: 537.48px;
+    background-position: center;
+    border-radius: 10px;
+}
+
+.background-img-w-100-4 {
+    background-image: url('../img/slider-2.jpg') !important;
+    background-size: cover;
+    background-position: center;
+    height: 537.48px;
+    border-radius: 10px;
+}
+
+.border {
+    border: 1px solid #969494;
+}
+
+.color-cjo {
+    color: #a0aaae;
+}
+
+.color-black {
+    color: black;
+}
+
+.color-xm4 {
+    color: #53ba4a;
+}
+
+.color-red {
+    color: #58151c;
+}
+
+.w-95 {
+    width: 95%;
+}
+
+.w-560 {
+    width: 560px !important;
+}
+
+.w-41-13 {
+    width: 41.13px !important;
+}
+
+.background-color-cjo {
+    background-color: #f0f3f2;
+}
+
+.background-color-xm4 {
+    background-color: #08ac0a;
+}
+
+.font-12 {
+    font-size: 12px;
+}
+
+.img-140-41-41 {
+    width: 140px !important;
+    height: 41.41px !important;
+}
+
+.img-64-64 {
+    width: 64px;
+    height: 64px;
+}
+
+.form-control {
+    padding: 0;
+    padding-top: 0.375rem !important;
+    padding-bottom: 0.375rem !important;
+}
+
+.form-control.w-41-13 {
+    display: unset;
+}
+
+.w-44-h-38 {
+    width: 44px;
+    height: 38px;
+}
+
+.pb-100px-pt-84px {
+    padding-bottom: 100.79px !important;
+    padding-top: 84px !important;
+}
+
+.w-100.border-r-10 {
+    background-image: url('../img/banner-deal.jpg');
+    min-width: 218px;
+    min-height: 325px;
+}
+
+.h470 {
+    min-width: 218px;
+    min-height: 325px;
+}
+
+.overflow-x {
+    overflow-x: auto !important;
+    flex-wrap: nowrap !important;
+}
+
+.font-14 {
+    font-size: 14px;
+}
+
+.p-x-0 {
+    padding: 0;
+}
+
+.w-62-h-57-color-cjo {
+    width: 62px !important;
+    height: 57.5px !important;
+    color: #959fa1;
+}
+
+.ms-12px {
+    margin-left: 12px;
+}

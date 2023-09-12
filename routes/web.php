@@ -8,6 +8,7 @@ use App\Http\Controllers\FrontController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\BackendController;
+use App\Http\Controllers\CartExclusiveController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,28 +28,35 @@ Route::get('/index', [MessageController::class, 'index'])->name('messageIndex');
 
 
 // 登入者可以使用
-Route::middleware('auth','role.weight:2')->group(function () {
-    Route::prefix('/message')->group(function(){
+Route::middleware('auth')->group(function () {
+    Route::prefix('/message')->group(function () {
         Route::post('/replayStore/{id}', [MessageController::class, 'replayStore'])->name('replayStore');
         Route::post('/store', [MessageController::class, 'store'])->name('messageStore');
         Route::put('/update/{id}', [MessageController::class, 'update'])->name('messageUpdate');
         Route::delete('/destroy/{id}', [MessageController::class, 'destroy'])->name('messageDestroy');
     });
-    Route::prefix('/reply')->group(function(){
+    Route::prefix('/reply')->group(function () {
         Route::put('/update/{id}', [ReplyController::class, 'update'])->name('replyUpdate');
         Route::delete('/destroy/{id}', [ReplyController::class, 'destroy'])->name('replyDestroy');
     });
-    Route::prefix('/user/infomation')->group(function(){
+    Route::middleware('role.weight:2')->prefix('/user/infomation')->group(function () {
         Route::get('/', [FrontController::class, 'user_info'])->name('user.info');
         Route::post('/update', [FrontController::class, 'user_info_update'])->name('user.info.update');
     });
-    Route::post('/products/add-carts',[FrontController::class,'add_cart'])->name('front.addCart');
+    Route::post('/products/add-carts', [FrontController::class, 'add_cart'])->name('front.addCart');
+    Route::middleware('role.weight:2')->prefix('/products')->group(function () {
+        Route::get('/cart-step01', [CartExclusiveController::class, 'step01'])->name('cart.step01');
+        Route::put('/updata-qty', [CartExclusiveController::class, 'updateQty'])->name('cart.updateQty');
+        Route::get('/cart-step02', [CartExclusiveController::class, 'step02'])->name('cart.step02');
+        Route::get('/cart-step03', [CartExclusiveController::class, 'step03'])->name('cart.step03');
+        Route::get('/cart-step04', [CartExclusiveController::class, 'step04'])->name('cart.step04');
+    });
 });
 
 
 // 只有管理者才能進入
 Route::middleware(['auth', 'role.weight:1'])->prefix('/admin')->group(function () {
-    Route::get('/',[BackendController::class,'index'])->name('backend.index');
+    Route::get('/', [BackendController::class, 'index'])->name('backend.index');
 
     Route::prefix('/product')->group(function () {
         Route::get('/list', [ProductController::class, 'index'])->name('product.index');
@@ -58,7 +66,7 @@ Route::middleware(['auth', 'role.weight:1'])->prefix('/admin')->group(function (
         Route::put('/update/{id}', [ProductController::class, 'update'])->name('product.update');
         Route::delete('/delete/{id}', [ProductController::class, 'destroy'])->name('product.delete');
     });
-    
+
     Route::resource('/type', TypeController::class);
     Route::get('/playground', [FrontController::class, 'test'])->name('test.step1');
     Route::post('/playground-step1/store', [FrontController::class, 'step1_store'])->name('test.step1Store');

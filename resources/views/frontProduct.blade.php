@@ -67,8 +67,12 @@
                                 <button type="button" class="controlBtn plusBtn"
                                     onclick="plus({{ $item->id }})">+</button>
                             </div>
-                            <button type="button" class="btn btn-primary"
-                                onclick="addCart({{ $item->id }})">加入購物車</button>
+                            @if (Auth::check())
+                                <button type="button" class="btn btn-primary"
+                                    onclick="addCart({{ $item->id }})">加入購物車</button>
+                            @else
+                                <a href="{{ route('login') }}" class="btn btn-primary"></a>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -82,7 +86,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         const addCartRoute = document.querySelector('input#addCartRoute').value;
-        console.log(addCartRoute);
+        // console.log(addCartRoute);
 
         function minus(id) {
             const input = document.querySelector(`input#product${id}`);

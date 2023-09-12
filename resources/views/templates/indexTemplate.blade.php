@@ -84,7 +84,7 @@
             <a href="https://freshcart.codescandy.com/pages/shop-wishlist.html" class="text text-decoration-none">
                 <img src="{{ asset('image/heart.svg') }}" alt="">
             </a>
-            <a href="#" class="text text-decoration-none">
+            <a href="{{ route('cart.step01') }}" class="text text-decoration-none">
                 <i class="bi bi-cart"></i>
             </a>
             <a href="{{ route('user.info') }}" class="text text-decoration-none">
@@ -109,8 +109,7 @@
         </div>
         <div class="ps-xl-2"><!--第二列選單八-->
             <div class="dropdown ps-xl-3 ">
-                <a class="btn fw-bolder" href=" {{ route('front.products') }}" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
+                <a href="{{ route('front.products') }}" class="text text-decoration-none">
                     Product
                 </a>
             </div>

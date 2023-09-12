@@ -98,6 +98,7 @@ class FrontController extends Controller
 
     public function add_cart(Request $request)
     {
+        // dd($request->user());
         $request->validate([
             'qty' => 'required|min:1|numeric',
             'product_id' => 'required|exists:products,id|numeric',
