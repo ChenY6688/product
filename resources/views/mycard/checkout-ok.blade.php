@@ -1,7 +1,10 @@
-@extends('layout.index')
+@extends('templates.indexTemplate')
+@section('head')
+    <link rel="stylesheet" href="{{ asset('css/cart.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/shopping-car.css') }}">
+@endsection
 @section('main')
 <div class="container">
-
     <div class="row">
         <div class="thank col-12">
             <div class="d-flex justify-content-center">

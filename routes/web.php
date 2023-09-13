@@ -47,8 +47,12 @@ Route::middleware('auth')->group(function () {
     Route::middleware('role.weight:2')->prefix('/products')->group(function () {
         Route::get('/cart-step01', [CartExclusiveController::class, 'step01'])->name('cart.step01');
         Route::put('/updata-qty', [CartExclusiveController::class, 'updateQty'])->name('cart.updateQty');
+        Route::delete('cart-step01/delete', [CartExclusiveController::class, 'deleteCart'])->name('cart.deleteCart');
+        
         Route::get('/cart-step02', [CartExclusiveController::class, 'step02'])->name('cart.step02');
+        Route::post('/cart-step02/store', [CartExclusiveController::class, 'step02_store'])->name('cart.step02Store');
         Route::get('/cart-step03', [CartExclusiveController::class, 'step03'])->name('cart.step03');
+        Route::post('/cart-step03/store', [CartExclusiveController::class, 'step03_store'])->name('cart.step03Store');
         Route::get('/cart-step04', [CartExclusiveController::class, 'step04'])->name('cart.step04');
     });
 });

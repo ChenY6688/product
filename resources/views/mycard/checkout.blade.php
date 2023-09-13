@@ -69,7 +69,7 @@
 
 
                             @foreach ($carts as $item)
-                                <div class="row">
+                                <div id="row{{ $item->id }}" class="row">
                                     <div class="col-3">
                                         <img src="{{ asset($item->product->img_path) }}" alt=""
                                             style="height: 90px">
@@ -78,7 +78,6 @@
                                         <span>{{ $item->product->name }}</span>
                                     </div>
                                     <div class="col-4 d-flex align-items-center">
-
                                         <div class="btns">
                                             <button type="button" class="controlBtn minusBtn"
                                                 onclick="minus({{ $item->id }})">-</button>
@@ -87,11 +86,14 @@
                                             <button type="button" class="controlBtn plusBtn"
                                                 onclick="plus({{ $item->id }})">+</button>
                                         </div>
-
                                     </div>
                                     <div class="col-2 d-flex flex-row-reverse align-items-center">
                                         <span id="price{{ $item->id }}">{{ $item->product->price * $item->qty }}
                                         </span>
+                                    </div>
+                                    <div>
+                                        <button type="button" class="btn btn-danger"
+                                            onclick="deleteCart('{{ $item->id }}')">刪除</button>
                                     </div>
                                 </div>
                             @endforeach
@@ -108,10 +110,11 @@
                 </div>
             </div>
         </div>
-        <a href="{{ route('cart.step02') }}" class="btn btn-primary">下一步</a>
+        <a id="nexStep" href="{{ route('cart.step02') }}" class="btn btn-primary">下一步</a>
     </div>
 @endsection
 @section('js')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         function minus(id) {
             const input = document.querySelector(`#cart${id}`);
@@ -157,6 +160,46 @@
                     total += price;
                 })
                 totalEl.textContent = '$' + total;
+            })
+        }
+
+        function deleteCart(id) {
+            Swal.fire({
+                title: '確定要刪除嗎?',
+                showDenyButton: true,
+                showCancelButton: true,
+                showConfirmButton: false,
+                denyButtonText: `刪除`,
+            }).then((result) => {
+                if (result.isDenied) {
+                    const formData = new FormData();
+                    formData.append('_token', '{{ csrf_token() }}');
+                    formData.append('_method', 'DELETE');
+                    formData.append('cart_id', id);
+                    fetch('{{ route('cart.deleteCart') }}', {
+                        method: 'POST',
+                        body: formData,
+                    }).then((res) => {
+                        return res.json();
+                    }).then((data) => {
+                        console.log(123);
+                        if (data.code === 1) {
+                            const row = document.querySelector(`#row${data.id}`);
+                            const rows = document.querySelectorAll('[id^=row]');
+                            const nexBtn = document.querySelector('#nexStep');
+                            const total = document.querySelector('#total');
+                            row.remove();
+                            total.textContent = '$' + data.total;
+
+                            if (rows.length === 0) {
+                                nexBtn
+                            }
+                        } else {
+                            location.reload();
+                        }
+                    })
+
+                }
             })
         }
     </script>
