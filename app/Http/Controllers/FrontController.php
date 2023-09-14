@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Cart;
+use App\Models\Order;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -131,5 +132,72 @@ class FrontController extends Controller
             'code' => $cart ? 1 : 0,
             'product_id' => $request->product_id,
         ];
+    }
+
+    public function order_list(Request $request)
+    {
+        $user = $request->user();
+
+        $orders = Order::where('user_id', $user->id)->orderBy('id', 'desc')->get();
+
+        return view('userOrder', compact('orders'));
+    }
+
+    public function order_detail(Request $request, $oder_forms_id)
+    {
+        $user = $request->user();
+        $order = Order::where('user_id', $user->id)->find($oder_forms_id);
+        $date = $order->date;
+
+        return view('orderDrtail', compact('order'));
+    }
+    public function ec_pay(Request $request, $order_id)
+    {
+        $user = $request->user();
+        $order = Order::where('user_id', $user->id)->find($order_id);
+
+        $string = 'ABCDEFGHIJKLMNOPQRSTUVWZabcdefghijklmnopqrstuvwxyz';
+        $shuffle = str_shuffle($string);
+
+        if ($order) {
+            $data = (object)[
+                'MerchantID' => '3002607',
+                'MerchantTradeNo' => $order->order_id . substr($shuffle, 0, 3),
+                'MerchantTradeDate' => date('Y/m/d H:i:s'),
+                'PaymentType' => 'aio',
+                'TotalAmount' => $order->total,
+                'TradeDesc' => 'YYDS線上購物網',
+                'ItemName' => 'YYDS購物',
+                'ReturnURL' => route('ecpay.returnBack'),
+                'ChoosePayment' => 'ALL',
+                'CheckMacValue' => '',
+                'EncryptType' => 1,
+                'ClientBackURL' => route('front.index'),
+                'IgnorePayment' => 'WebATM#CVS#BARCODE',
+            ];
+            // 測試用
+            $hashKey = 'pwFHCqoQZGmho4w6';
+            $hashIv = 'EkRm7iFT261dpevs';
+
+            $step1 = "ChoosePayment={$data->ChoosePayment}&ClientBackURL={$data->ClientBackURL}&EncryptType={$data->EncryptType}&IgnorePayment={$data->IgnorePayment}&ItemName={$data->ItemName}&MerchantID={$data->MerchantID}&MerchantTradeDate={$data->MerchantTradeDate}&MerchantTradeNo={$data->MerchantTradeNo}&PaymentType={$data->PaymentType}&ReturnURL={$data->ReturnURL}&TotalAmount={$data->TotalAmount}&TradeDesc={$data->TradeDesc}";
+
+            $step2 = "HashKey={$hashKey}&{$step1}&HashIV={$hashIv}";
+            $step3 = urlencode($step2);
+            $step4 = strtolower($step3);
+            $step5 = hash('sha256', $step4);
+            $step6 = strtoupper($step5);
+
+            $data->CheckMacValue = $step6;
+
+            return view('ecpay', compact('data'));
+        } else {
+            return redirect('/');
+        }
+    }
+
+    public function ec_pay_return(Request $request)
+    {
+        // 綠界打不回來 因為我們是本伺服器
+        dd($request->all());
     }
 }

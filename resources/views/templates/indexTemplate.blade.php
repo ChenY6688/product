@@ -49,8 +49,7 @@
 <body>
     <!--頂層回首頁 FreshCart-->
     <div class="d-xl-flex flex-row mb-3 container ">
-        <a href="https://freshcart.codescandy.com/index.html"
-            class="p-xl-3 fw-bolder fs-2 text-dark text-decoration-none ">
+        <a href="{{ route('front.index') }}" class="p-xl-3 fw-bolder fs-2 text-dark text-decoration-none ">
             <img src="{{ asset('image/freshcart-logo.svg') }}" alt=""></a>
         <div class="input-group mb-3 pt-4 w-25">
             <input type="text" class="form-control" placeholder="Search for products"
@@ -81,8 +80,8 @@
                     <a href="{{ route('login') }}">hi, 訪客點此登入</a>
                 </div>
             @endguest
-            <a href="https://freshcart.codescandy.com/pages/shop-wishlist.html" class="text text-decoration-none">
-                <img src="{{ asset('image/heart.svg') }}" alt="">
+            <a href="{{ route('user.list') }}" class="text text-decoration-none">
+                <i class="bi bi-card-list"></i>
             </a>
             <a href="{{ route('cart.step01') }}" class="text text-decoration-none">
                 <i class="bi bi-cart"></i>

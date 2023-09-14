@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="d-flex col-12 justify-content-around">
-            <a href=""><button class="btn border">查看訂單</button></a>
+            <a href="{{ route('user.list') }}"><button class="btn border">查看訂單</button></a>
             <a href="{{ route('front.index') }}"><button class="btn border">回首頁</button></a>
         </div>
     </div>

@@ -143,14 +143,19 @@ class CartExclusiveController extends Controller
         ]);
 
         session()->forget(['name', 'addr', 'date', 'phone', 'menu']);
-        $data = [
-            'name' => $request->user()->name,
-            'order_id' => $form->order_id,
-            'total' => $total,
-        ];
-        Mail::to($request->user()->email)->send(new OrderCreated($data));
 
-        return redirect(route('cart.step04'));
+        // $data = [
+        //     'name' => $request->user()->name,
+        //     'order_id' => $form->order_id,
+        //     'total' => $total,
+        // ];
+        // 信箱
+        // Mail::to($request->user()->email)->send(new OrderCreated($data));
+        if ($request->pay == 1) {
+            return redirect(route('cart.step04'));
+        } else {
+            return redirect(route('ecpay', ['order_id' => $form->id]));
+        }
     }
 
     public function step04()

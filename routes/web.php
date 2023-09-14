@@ -42,6 +42,8 @@ Route::middleware('auth')->group(function () {
     Route::middleware('role.weight:2')->prefix('/user/infomation')->group(function () {
         Route::get('/', [FrontController::class, 'user_info'])->name('user.info');
         Route::post('/update', [FrontController::class, 'user_info_update'])->name('user.info.update');
+        Route::get('/user/order/list',[FrontController::class,'order_list'])->name('user.list');
+        Route::get('/user/order/list/detail/{oder_forms_id}',[FrontController::class,'order_detail'])->name('user.order.detail');
     });
     Route::post('/products/add-carts', [FrontController::class, 'add_cart'])->name('front.addCart');
     Route::middleware('role.weight:2')->prefix('/products')->group(function () {
@@ -76,6 +78,9 @@ Route::middleware(['auth', 'role.weight:1'])->prefix('/admin')->group(function (
     Route::post('/playground-step1/store', [FrontController::class, 'step1_store'])->name('test.step1Store');
     Route::get('/playground-step2', [FrontController::class, 'test2'])->name('test.step2');
 });
+
+Route::get('/ECPay/{order_id}',[FrontController::class,'ec_pay'])->name('ecpay');
+Route::get('/ECPay/return_back',[FrontController::class,'ec_pay_return'])->name('ecpay.returnBack');
 
 
 require __DIR__ . '/auth.php';
