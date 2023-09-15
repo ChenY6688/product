@@ -103,7 +103,6 @@ class FrontController extends Controller
         $request->validate([
             'qty' => 'required|min:1|numeric',
             'product_id' => 'required|exists:products,id|numeric',
-
         ]);
 
         // 寫法一

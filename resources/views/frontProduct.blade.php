@@ -86,7 +86,6 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         const addCartRoute = document.querySelector('input#addCartRoute').value;
-        // console.log(addCartRoute);
 
         function minus(id) {
             const input = document.querySelector(`input#product${id}`);
