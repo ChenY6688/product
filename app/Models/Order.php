@@ -9,10 +9,6 @@ class Order extends Model
 {
     protected $table = 'orders';
     protected $fillable = ['order_id', 'user_id', 'name', 'address', 'date', 'phone', 'menu', 'total', 'pay', 'status'];
-    // status
-    // 1 =>未繳費
-    // 2 =>已繳費
-    // 3 =>
 
     public function  productoder()
     {

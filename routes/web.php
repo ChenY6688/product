@@ -44,6 +44,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/update', [FrontController::class, 'user_info_update'])->name('user.info.update');
         Route::get('/user/order/list',[FrontController::class,'order_list'])->name('user.list');
         Route::get('/user/order/list/detail/{oder_forms_id}',[FrontController::class,'order_detail'])->name('user.order.detail');
+        Route::post('order/back/-to-pay',[FrontController::class,'back_to_pay'])->name('user.order.backToPay');
     });
     Route::post('/products/add-carts', [FrontController::class, 'add_cart'])->name('front.addCart');
     Route::middleware('role.weight:2')->prefix('/products')->group(function () {

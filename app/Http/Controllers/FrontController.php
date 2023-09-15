@@ -199,4 +199,19 @@ class FrontController extends Controller
         // 綠界打不回來 因為我們是本伺服器
         dd($request->all());
     }
+
+    public function back_to_pay(Request $request)
+    {
+        $request->validate([
+            'orderId' => 'required|exists:orders,id',
+        ]);
+        $user = $request->user();
+        $order = Order::where('user_id', $user->id)->find($request->orderId);
+        if ($order) {
+            if ($order->status == 1) {
+                return redirect(route('ecpay', ['order_id' => $request->orderId]));
+            }
+        }
+        return redirect(route('user.list'))->with(['msg' => '訂單不存在']);
+    }
 }
