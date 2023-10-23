@@ -34,9 +34,6 @@ class MessageController extends Controller
      */
     public function replayStore(Request $request, $id)
     {
-        //
-        // dd($id);
-        // dd(ReplyToMessage::all());
         $messageId = $request->input('message_id');
         ReplyToMessage::create([
             'replay_message' => $request->reply,
@@ -65,8 +62,6 @@ class MessageController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
-        // dd($request->all());
         $message = Message::find($id);
         $message->update([
             'message' => $request->message,
